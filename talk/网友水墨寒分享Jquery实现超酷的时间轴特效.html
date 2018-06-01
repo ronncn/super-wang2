@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0154)http://www.17sucai.com/preview/24598/2013-08-12/Jquery%E5%AE%9E%E7%8E%B0%E8%B6%85%E9%85%B7%E7%9A%84%E6%97%B6%E9%97%B4%E8%BD%B4%E7%89%B9%E6%95%88/demo.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>网友水墨寒分享Jquery实现超酷的时间轴特效</title>
+
+<link href="./网友水墨寒分享Jquery实现超酷的时间轴特效_files/style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="container" class="masonry" style="position: relative; height: 672px;">
+	<div class="timeline_container">
+		<div class="timeline">
+			<div class="plus"></div>
+			<div class="plus2"></div>
+		</div>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 30px; left: 0px;"><span class="rightcorner"></span>
+		<h3><span class="fl">柳州一通网</span><span class="fr">IP：221.7.207***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-21 08:46:29</span></h3>
+		<p class="con">帮我做的网站很好，很满意<br>支持一下下。。。</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 30px; left: 520px;"><span class="leftcorner"></span>
+		<h3><span class="fl">柳州</span><span class="fr">IP：221.7.207***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-21 08:39:32</span></h3>
+		<p class="con">很有创意</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 234px; left: 520px;"><span class="leftcorner"></span>
+		<h3><span class="fl">伪装的心</span><span class="fr">IP：218.56.32***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-21 08:07:48</span></h3>
+		<p class="con">很不错的页面啊<br>支持一下下。。。</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 264px; left: 0px;"><span class="rightcorner"></span>
+		<h3><span class="fl">千里</span><span class="fr">IP：111.11.189.***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-20 23:52:25</span></h3>
+		<p class="con">给你留言</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 468px; left: 0px;"><span class="rightcorner"></span>
+		<h3><span class="fl">漫画之迷</span> <span class="fr">IP：119.137.61.***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-20 23:00:25</span></h3>
+		<p class="con">网站真不错啊，漫画情不自禁地在此留了个言，哈哈。。。</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+	<div class="item masonry-brick" style="position: absolute; top: 468px; left: 520px;"><span class="leftcorner"></span>
+		<h3><span class="fl">水墨寒</span> <span class="fr">IP：27.224.56***&nbsp;&nbsp;&nbsp;&nbsp;2013-02-20 22:42:43</span></h3>
+		<p class="con">自己先把沙发坐了！水墨寒个人官网（<a href="http://www.smohan.net/" target="_blank">http://www.smohan.net/</a>）正式开通！欢迎大家留意</p>
+		<h4><b>Reply：</b>管理员尚未回复</h4>
+	</div>
+</div>
+
+<script src="./网友水墨寒分享Jquery实现超酷的时间轴特效_files/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="./网友水墨寒分享Jquery实现超酷的时间轴特效_files/smohan.blog.plug.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#container').masonry({itemSelector : '.item'});
+	
+	function Arrow_Points(){
+		var s = $("#container").find(".item");
+		$.each(s,function(i,obj){
+			var posLeft = $(obj).css("left");
+			if(posLeft == "0px"){
+				html = "<span class='rightcorner'></span>";
+				$(obj).prepend(html);
+			} else {
+				html = "<span class='leftcorner'></span>";
+				$(obj).prepend(html);
+			}
+		});
+	}
+	
+	Arrow_Points();
+	
+});
+</script>
+
+
+</body></html>
