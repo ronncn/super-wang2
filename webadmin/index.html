@@ -106,6 +106,7 @@
 		</div>
 	</section>
 	<script type="text/javascript">
+		$("#page-child").load($(".menu-item:first").data("page"));
 		$(document).on('click', '.menu-item', function () {
 			var addr = $(this).data("page");
 		  	$("#page-child").load(addr);
