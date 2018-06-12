@@ -12,7 +12,7 @@ function get_childpage($page,$para=null)
 	else
 	{
 		$p = file_get_contents("http://localhost/wanglong.work/webadmin/".$page.".php?".$para);
-		//echo $p;
+		//echo $para;
 	}
 	return $p;
 }
@@ -28,7 +28,12 @@ else
 	{
 		if(isset($_GET['para']))
 		{
-			$para = $_GET['para'];
+			$id = "";
+			if(isset($_GET['Id']))
+			{
+				$id = $_GET['Id'];
+			}
+			$para = $_GET['para']."&Id=".$id;
 		}
 		else
 		{
@@ -128,8 +133,8 @@ else
 					        </div>
 					        <div id="collapse2" class="panel-collapse collapse">
 				            	<ul class="list-group">
-								    <li class="list-group-item menu-item" data-page="add_article.html">发布文章</li>
-								    <li class="list-group-item menu-item" data-page="article_list.html">文章列表</li>
+								    <li class="list-group-item menu-item" data-page="add_article">发布文章</li>
+								    <li class="list-group-item menu-item" data-page="article_list">文章列表</li>
 								</ul>
 					        </div>
 					    </div>
@@ -143,8 +148,8 @@ else
 					        </div>
 					        <div id="collapse3" class="panel-collapse collapse">
 				            	<ul class="list-group">
-								    <li class="list-group-item menu-item" data-page="add_message.html">添加留言</li>
-								    <li class="list-group-item menu-item" data-page="message_list.html">留言列表</li>
+								    <li class="list-group-item menu-item" data-page="add_message">添加留言</li>
+								    <li class="list-group-item menu-item" data-page="message_list">留言列表</li>
 								</ul>
 					        </div>
 					    </div>
@@ -158,7 +163,7 @@ else
 					        </div>
 					        <div id="collapse4" class="panel-collapse collapse">
 				            	<ul class="list-group">
-								    <li class="list-group-item menu-item" data-page="setting.html">网站设置</li>
+								    <li class="list-group-item menu-item" data-page="setting">网站设置</li>
 								</ul>
 					        </div>
 					    </div>
@@ -173,7 +178,6 @@ else
 	<script>
 		$(".menu-item").click(function(){
 			var addr = $(this).data("page");
-		  	//$("#page-child").load(addr);
 			window.location.href = "admin.php?page=" + addr;
 		})
 	</script>

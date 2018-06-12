@@ -75,7 +75,8 @@ class DBHelper
 		$sth = $this->query($sql);
 		if($sth)
 		{
-			return $sth->fetchAll(PDO::FETCH_ASSOC);
+			$arr = $sth->fetchAll(PDO::FETCH_ASSOC);
+			return $arr;
 		}
 		else
 		{
@@ -120,7 +121,7 @@ class DBHelper
 	{
 		$sqlset = $this->_doset($data);
 		$sql = "update {$table} {$sqlset} {$where}";
-		if(!$this->query($sql))
+		if($this->query($sql))
 		{
 			return true;
 		}
@@ -138,7 +139,7 @@ class DBHelper
 			return;
 		}
 		$sql = "delete from {$table} {$where}";
-		if(!$this->query($sql))
+		if($this->query($sql))
 		{
 			return true;
 		}

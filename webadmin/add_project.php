@@ -26,8 +26,15 @@ if(isset($_GET['action']))
 			}
 		break;
 		case "edit":
-			if(!isset($_GET['Id']))
+			if(isset($_GET['Id']))
 			{
+				$where = "where Id = {$_GET['Id']}";
+				$resurt = $db->select_one("wl_project",$where);
+				$data['project_title'] = $resurt['project_title'];
+				$data['project_class'] = $resurt['project_class'];
+				$data['project_file'] = $resurt['project_file'];
+				$data['project_addr'] = $resurt['project_addr'];
+				//$data['date'] = date('y-m-d h:i:s',time());
 			}
 		break;
 		case "error":
@@ -37,6 +44,7 @@ if(isset($_GET['action']))
 			echo "发布成功！"; 
 		break;
 		default:
+			echo "发布失败！"; 
 		break;
 	}
 }
@@ -103,7 +111,20 @@ if(isset($_GET['action']))
 </div>
 <script>
 $("#send").click(function(){
-	$("#add_project_form").submit();
+	var _title = $("input[name='title']").val();
+	var _class = $("input[name='class']").val();
+	if(_title == '')
+	{
+		alert("请输入项目名称");
+	}
+	else if(_class == '')
+	{
+		alert("请输入项目分类");
+	}
+	else
+	{	
+		$("#add_project_form").submit();
+	}
 })
 $("#clear").click(function(){
 	    $("#add_project_form :input").not(":button, :submit, :reset, :hidden, :checkbox, :radio").val("");  
