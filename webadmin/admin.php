@@ -131,7 +131,7 @@ else
 					                <span class="glyphicon glyphicon-list-alt"></span> 文章管理
 					            </h4>
 					        </div>
-					        <div id="collapse2" class="panel-collapse collapse">
+					        <div id="collapse2" class="panel-collapse collapse in">
 				            	<ul class="list-group">
 								    <li class="list-group-item menu-item" data-page="add_article">发布文章</li>
 								    <li class="list-group-item menu-item" data-page="article_list">文章列表</li>
@@ -146,7 +146,7 @@ else
 					                留言管理
 					            </h4>
 					        </div>
-					        <div id="collapse3" class="panel-collapse collapse">
+					        <div id="collapse3" class="panel-collapse collapse in">
 				            	<ul class="list-group">
 								    <li class="list-group-item menu-item" data-page="add_message">添加留言</li>
 								    <li class="list-group-item menu-item" data-page="message_list">留言列表</li>
@@ -161,7 +161,7 @@ else
 					                网站设置
 					            </h4>
 					        </div>
-					        <div id="collapse4" class="panel-collapse collapse">
+					        <div id="collapse4" class="panel-collapse collapse in">
 				            	<ul class="list-group">
 								    <li class="list-group-item menu-item" data-page="setting">网站设置</li>
 								</ul>

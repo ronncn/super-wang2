@@ -93,7 +93,31 @@ if(isset($_GET['action']))
 				</div>
 				<div class="col-sm-3">
 					<label class="sr-only" for="inputfile">文件输入</label>
-					<input type="file" id="inputfile">
+					<input type="file" name="project" id="inputFile" onchange = "uploadFile()">
+					<script>
+						function uploadFile()
+						{
+							var formData = new FormData();
+							var fileObj = document.getElementById("inputFile").files[0];
+							formData.append("file",fileObj);
+							$.ajax({
+								url: "uploadProject.php",
+								type: "POST",
+								data: formData,
+								contentType: false,
+								processData: false,
+								success: function (json) {
+									//上传成功
+									console.log(json);
+									$("input[name='file_path']").val(json);
+								},
+								error: function (data) {
+									//上传失败
+									console.log(data);
+								}
+							});
+						}
+					</script>
 				</div>
 			</div>
 			<div class="form-group">

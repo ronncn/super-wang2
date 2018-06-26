@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<!--字符编码-->
+    <meta charset="UTF-8" />
+	<!--视图 宽度等于设备宽度丨初始化缩放等于1丨不允许用户缩放-->
+	<meta name="viewport" content="width=device-width, initial-scale = 1, user-scalable=no" />
+	<!--关键字 关键字内容-->
+	<meta name="keywords" content="" />
+	<!--描述 描述内容-->
+	<meta name="description" content="" />
+	<!--网站的ico图标-->
+	<link href="bitbug_favicon.ico" rel="icon" />
+	<link href="public/css/index.css" rel="stylesheet" />
+	<!--网站的标题-->
+	<title>wanglong.work丨首页</title>
+	
+</head>
+<body>
+	<form action="upload.php" method="post" enctype="multipart/form-data" >  
+    name: <input type="text" name="username" value="" /><br>  
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />  
+    up pic: <input type="file" name="pic[]" value=""><br>  
+    up pic: <input type="file" name="pic[]" value=""><br>  
+    up pic: <input type="file" name="pic[]" value=""><br>  
+    up pic: <input type="file" name="pic[]" value=""><br>  
+    
+    <input type="submit" value="upload" /><br>  
+    
+</form>  
+</body>
+</html>
