@@ -6,17 +6,22 @@ if(isset($_GET['action']))
 	switch($_GET['action'])
 	{
 		case "add":
-			if(!is_null($_POST['id']))
-			{
-				$data['Id'] = $_POST['id'];
-			}
 			$data['project_title'] = $_POST['title'];
 			$data['project_class'] = $_POST['class'];
 			$data['project_file'] = $_POST['file_path'];
 			$data['project_addr'] = $_POST['addr'];
-			$data['date'] = date('y-m-d h:i:s',time());
-			$resurt = $db->insert("wl_project", $data);
-			if($resurt != -1)
+			$data['date'] = date('y-m-d H:i:s',time());
+			if($_POST['id'] != "")
+			{
+				$id = $_POST['id'];
+				$where = "where Id = {$id}";
+				$resurt = $db->update("wl_project", $data, $where);
+			}
+			else
+			{
+				$resurt = $db->insert("wl_project", $data);
+			}
+			if($resurt)
 			{
 				header("location:admin.php?page=add_project&para=action=success");
 			}
@@ -30,15 +35,13 @@ if(isset($_GET['action']))
 			{
 				$where = "where Id = {$_GET['Id']}";
 				$resurt = $db->select_one("wl_project",$where);
+				$data['Id'] = $_GET['Id'];
 				$data['project_title'] = $resurt['project_title'];
 				$data['project_class'] = $resurt['project_class'];
 				$data['project_file'] = $resurt['project_file'];
 				$data['project_addr'] = $resurt['project_addr'];
 				//$data['date'] = date('y-m-d h:i:s',time());
 			}
-		break;
-		case "error":
-			echo "发布失败！"; 
 		break;
 		case "success":
 			echo "发布成功！"; 
@@ -86,10 +89,8 @@ if(isset($_GET['action']))
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="name">项目文件：</label>
 				<div class="col-sm-7">
-					<fieldset disabled>
 						<input type="text" class="form-control" name="file_path" placeholder="项目文件"
-						value="<?php if(isset($data['project_file'])){ echo $data['project_file'];}?>">
-					</fieldset>
+						value="<?php if(isset($data['project_file'])){ echo $data['project_file'];}?>" readonly="readonly">
 				</div>
 				<div class="col-sm-3">
 					<label class="sr-only" for="inputfile">文件输入</label>
@@ -123,11 +124,9 @@ if(isset($_GET['action']))
 			<div class="form-group">
 				<label class="col-sm-2 control-label">项目链接：</label>
 				<div class="col-sm-10">
-					<fieldset disabled>
 						<input class="form-control" name="addr" type="text"
 						value="<?php if(isset($data['project_addr'])){ echo $data['project_addr'];}?>"
-						placeholder="请输入项目链接">
-					</fieldset>
+						placeholder="请输入项目链接" readonly="readonly">
 				</div>
 			</div> 
 		</form>
@@ -151,8 +150,8 @@ $("#send").click(function(){
 	}
 })
 $("#clear").click(function(){
-	    $("#add_project_form :input").not(":button, :submit, :reset, :hidden, :checkbox, :radio").val("");  
-        $("#add_project_form :input").removeAttr("checked").remove("selected");  
+	$("#add_project_form :input").not(":button, :submit, :reset, :hidden, :checkbox, :radio").val("");  
+	$("#add_project_form :input").removeAttr("checked").remove("selected");  
 })
 </script>
 			

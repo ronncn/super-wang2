@@ -107,7 +107,8 @@ class DBHelper
 		$sql = "insert into {$table} {$sqlset}";
 		if(!$this->query($sql))
 		{
-			$id = -1;
+			//$id = -1;
+			return false;
 		}
 		else
 		{

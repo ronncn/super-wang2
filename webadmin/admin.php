@@ -71,6 +71,7 @@ else
 	else
 	{
 		$page = get_childpage("add_project",null);
+		
 	}
 ?>
 <!DOCTYPE html>
