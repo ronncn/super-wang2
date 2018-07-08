@@ -48,12 +48,16 @@ switch ($action) {
 /* 输出结果 */
 if (isset($_GET["callback"])) {
     if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
+		//echo "1";
         echo htmlspecialchars($_GET["callback"]) . '(' . $result . ')';
     } else {
         echo json_encode(array(
             'state'=> 'callback参数不合法'
         ));
+		//echo "2";
     }
 } else {
+	//echo "3";
     echo $result;
+	//var_dump($result);
 }
