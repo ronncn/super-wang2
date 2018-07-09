@@ -40,7 +40,7 @@ class DBHelper
 			$this->_user = $user;
 			$this->_password = $pwd;
 			$this->_dbname = $dbname;
-			$dsn = "$this->_dbms:host=$this->_host;dbname=$this->_dbname";//数据源
+			$dsn = "$this->_dbms:host=$this->_host;dbname=$this->_dbname;port=$this->_port;charset=utf8";//数据源
 			try
 			{
 				$this->db = new PDO($dsn, $this->_user, $this->_password);//初始化一个PDO对象
@@ -83,7 +83,6 @@ class DBHelper
 			return false;
 		}
 	}
-	
 	// 查询操作（返回第一条数据）
 	public function select_one($table, $where = '', $field = '*')
 	{

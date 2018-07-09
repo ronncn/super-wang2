@@ -117,7 +117,12 @@ class UploadHelper
 	
 	public function getFileName()
 	{
-		return $this->newFileName;
+		return $this->originName;
+	}
+	
+	public function getUploadPath()
+	{
+		return $this->path;
 	}
 	
 	public function getFilePath()

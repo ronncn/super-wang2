@@ -2,12 +2,17 @@
 // 解决中文乱码问题
 header("Content-Type: text/html;charset=utf-8"); 
 require "DBHelper.class.php";
+//$host = "cmwuy9p2.2334.dnstoo.com";			//主机
+//$port = 5512;					//端口
+//$user = "wanglong_f";					//用户名
+//$pass = "wl1022271711";					//密码
+//$dbname = "wanglong";			//数据库
 $host = "localhost";			//主机
 $port = 3306;					//端口
 $user = "root";					//用户名
 $pass = "root";					//密码
 $dbname = "wanglong";			//数据库
-$db=new DBHelper($host,$user,$pass,$dbname);
+$db=new DBHelper($host,$user,$pass,$dbname,$port);
 
 function get_ip(){
     //判断服务器是否允许$_SERVER

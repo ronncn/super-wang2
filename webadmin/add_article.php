@@ -8,6 +8,7 @@ if(isset($_GET['action']))
 		case "add":
 			$data['article_title'] = $_POST['title'];
 			$data['article_key'] = $_POST['key'];
+			$data['article_des'] = $_POST['desc'];
 			$data['article_class'] = $_POST['class'];
 			$data['article_content'] = $_POST['content'];
 			$data['article_date'] = date('Y-m-d H:i:s', time());
@@ -104,6 +105,7 @@ if(isset($_GET['action']))
 		      placeholder="输入标签请用逗号“,”分隔">
 		    </div>
 		  </div> 
+		  <input type="hidden" name="desc" id="desc" value="" />
 		  <!--
 		  <div class="form-group">
 		    <label class="col-sm-2 control-label" for="name">文章首图：</label>
@@ -153,6 +155,8 @@ $("#send").click(function(){
 	}
 	else
 	{	
+		var txt = ue.getContentTxt();
+		$("desc").val(txt.substring(0,100));
 		$("#add_article_form").submit();
 	}
 })
