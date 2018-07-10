@@ -42,24 +42,13 @@ else
 		switch($_GET['page'])
 		{
 			case "project_list":
-				$page = get_childpage($_GET['page'],$para);
-			break;
 			case "add_article":
-				$page = get_childpage($_GET['page'],$para);
-			break;
 			case "article_list":
-				$page = get_childpage($_GET['page'],$para);
-			break;
 			case "add_message":
-				$page = get_childpage($_GET['page'],$para);
-			break;
 			case "message_list":
-				$page = get_childpage($_GET['page'],$para);
-			break;
 			case "message_reply":
-				$page = get_childpage($_GET['page'],$para);
-			break;
-			case "setting":
+			case "setting_web":
+			case "setting_admin":
 				$page = get_childpage($_GET['page'],$para);
 			break;
 			default:
@@ -100,7 +89,7 @@ else
 		    	<h1>后台管理
 		        	<small>主页</small>
 		        	<span style="float: right; font-size: 16px; margin-top: 20px;">
-						<a href="login.php?action=logout"><?php echo $_SESSION['admin_id'];?></a>
+						<a href="login.php?action=logout"><?php echo $_SESSION['admin_name'];?></a>
 					</span>
 		    	</h1>
 			</div>
@@ -164,7 +153,8 @@ else
 					        </div>
 					        <div id="collapse4" class="panel-collapse collapse in">
 				            	<ul class="list-group">
-								    <li class="list-group-item menu-item" data-page="setting">网站设置</li>
+								    <li class="list-group-item menu-item" data-page="setting_web">网站设置</li>
+								    <li class="list-group-item menu-item" data-page="setting_admin">网站管理员</li>
 								</ul>
 					        </div>
 					    </div>
