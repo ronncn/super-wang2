@@ -44,12 +44,32 @@ $message = $db->select_all("wl_comment","order by comment_date desc");
 					<p>关于留言板的使用说明</p>
 				</div>
 				<div class="content">
-					<form method="post" action="message.php?action=submit">
+					<form id="messageForm" method="post" action="message.php?action=submit">
 						<textarea name="message" rows="10" placeholder="请留言..." maxlength="500"></textarea>
 						<input type="text" name="nick" placeholder="请输入昵称" />
 						<input class="fr" type="text" name="contact" placeholder="请输入电子邮箱" />
-						<input class="btn" type="submit" name="btn_message" value="留言" />
+						<button class="btn" type="button" name="btn_message">留言</button>
 					</form>
+					<script>
+						$(".btn").click(function(){
+							if($("textarea[name='message']").val() == "")
+							{
+								alert("请输入留言信息");
+							}
+							else if($("input[name='nick']").val() == "")
+							{
+								alert("请输入昵称");
+							}
+							else if($("input[name='contact']").val() == "")
+							{
+								alert("请输入电子邮箱");
+							}
+							else
+							{
+								$("#messageForm").submit();
+							}
+						})
+					</script>
 				</div>
 				<div class="display">
 					<div class="title">
