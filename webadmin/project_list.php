@@ -11,7 +11,7 @@ if(isset($_GET['action']))
 			if(isset($_GET['Id']))
 			{
 				$where = "where Id = {$_GET['Id']}";
-				$rs = $db->deleted("wl_project",$where);
+				$rs = $db->deleted("wl_project", $where);
 				if($rs)
 				{
 					header("location:admin.php?page=project_list");
@@ -21,6 +21,20 @@ if(isset($_GET['action']))
 			{
 				echo "未设置删除ID";
 			}
+		break;
+		case "deleteall":
+			$ids = $_POST['ids'];
+			$where = "where Id in ('{$ids}')";
+			$rs = $db->deleted("wl_project", $where);
+			if($rs)
+			{
+				echo "success";
+			}
+			else
+			{
+				echo "error";
+			}
+			exit();
 		break;
 	}
 }
@@ -35,10 +49,10 @@ if(isset($_GET['action']))
 				<button type="button" class="btn btn-success menu-item" data-page="add_project">
 					<span class="glyphicon glyphicon-plus"></span> 添加
 				</button>
-				<button type="button" class="btn btn-info">
+				<button id="checkall" type="button" class="btn btn-info">
 				 <span class="glyphicon glyphicon-th"></span> 全选
 				</button>
-				<button type="button" class="btn btn-danger">
+				<button id="deleteall" type="button" class="btn btn-danger">
 				 <span class="glyphicon glyphicon-minus"></span> 删除
 				</button>
 			</div>
@@ -59,7 +73,7 @@ if(isset($_GET['action']))
 		    <tr>
 		    	<td> 
 				    <label class="checkbox-inline">
-				        <input type="checkbox" id="inlineCheckbox1" value="<?php echo $data['Id'];?>"> <?php echo $data['Id'];?>
+				        <input type="checkbox" name="id" value="<?php echo $data['Id'];?>"> <?php echo $data['Id'];?>
 				    </label>
 				</td>
 		      <td><?php echo $data['project_title'];?></td>
@@ -79,3 +93,50 @@ if(isset($_GET['action']))
 		</table>
 	</div>
 </div>
+<script>
+var flag = false;
+$("#checkall").click(function(){
+	if(flag)
+	{
+		$("input[name='id']").each(function() { 
+			this.checked = false; 
+		}); 
+		$("#checkall").text("全选");
+		flag = !flag;
+	}
+	else
+	{
+		$("input[name='id']").each(function() { 
+			this.checked = true; 
+		}); 
+		$("#checkall").text("取消全选");
+		flag = !flag;
+	}
+});
+$("#deleteall").click(function(){
+	var postModel="";  
+	  //遍历复选框获取要删除的数据ID 存放到数组中  
+	  $("input[name='id']").each(function () {  
+		  if (this.checked) 
+		  {
+			 postModel+=$(this).val()+"','";  
+		  }
+	   });	   
+	 if(postModel.length == 0) {  
+		 alert('请先选择要删除的内容!');  
+		 return;  
+	  }
+	  postModel= postModel.substr(0,postModel.length-3);
+	$.post(
+	"project_list.php?action=deleteall",
+	{"ids":postModel},
+	function(rs){
+		if(rs == "error")
+		{
+			alert("删除失败！");
+		}
+		window.location.reload();
+      }
+	);
+});
+</script>
