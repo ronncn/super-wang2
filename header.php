@@ -21,7 +21,7 @@ $class_list = $db->select_all("wl_project",'',"distinct project_class");
 	<link href="public/css/index.css" rel="stylesheet" />
 	<!--网站的标题-->
 	<title><?php echo $setting['web_title'];?></title>
-	
+	<script src="public/js/jquery-3.3.1.js"></script>
 </head>
 <body>
 	<header>
@@ -34,7 +34,7 @@ $class_list = $db->select_all("wl_project",'',"distinct project_class");
 				<li><a href="index.php">项目</a></li>
 				<li><a href="article_list.php">随笔</a></li>
 				<li><a href="message.php">留言</a></li>
-				<li><a href="article.php">关于</a></li>
+				<li><a href="article.php?id=5">关于</a></li>
 			</ul>
 		</nav>
 	</header>
